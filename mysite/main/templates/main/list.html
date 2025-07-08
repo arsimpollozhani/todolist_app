@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+
+{% block title %} Viewing list {% endblock %}
+
+
+{% block content %}
+
+    <h1>{{ lista.name }}</h1>
+    <ul>
+        {% for item in lista.items.all %}
+            {% if item.complete == False %}
+                <li>{{item.text}} - NOT COMPLETED</li>
+            {% else %}
+                <li>{{item.text}} - COMPLETED</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
