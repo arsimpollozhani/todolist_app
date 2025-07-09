@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+
+{% block title %} Create list {% endblock %}
+
+
+{% block content %}
+
+Create Page
+<!-- Modifying the database USE post -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="save">Create new</button>
+</form>
+
+{% endblock %}
