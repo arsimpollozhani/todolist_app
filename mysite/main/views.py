@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item
 from .forms import CreateNewList
 
 # Create your views here.
+
+
+# display items, save items, update items
 
 def index(request, id):
     lista = ToDoList.objects.get(id=id)
@@ -18,7 +21,7 @@ def index(request, id):
         if request.POST.get("save"):  # name="save" btn   for saving
             
             for item in lista.items.all():  #saving check buttons
-                if request.POST.get("c" + str(item.id)) == "clicked":
+                if request.POST.get("c" + str(item.id)) == "clicked": 
                     item.complete = True
                 else:
                     item.complete = False
@@ -39,15 +42,24 @@ def index(request, id):
 def home (request):
     return render(request, "main/home.html", {})
 
+
+# Handle a TodoList form
 def create(request):
+    # request.user  -> access user attributes
     if request.method == "POST":
         form = CreateNewList(request.POST)  # get all info from the form (dict)
         if form.is_valid():
             n = form.cleaned_data["name"]  # get the name from unencrypted data
             t = ToDoList(name=n)
             t.save()
+            request.user.todolist.add(t)
         
         return HttpResponseRedirect ("/%i" % t.id)
     else:
         form = CreateNewList()
     return render(request, "main/create.html", {"form": form})
+
+
+def view (request):
+    return render (request, "main/view.html", {})
+

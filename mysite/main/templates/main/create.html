@@ -1,17 +1,18 @@
 {% extends "main/base.html" %}
 
-
 {% block title %} Create list {% endblock %}
-
 
 {% block content %}
 
-Create Page
-<!-- Modifying the database USE post -->
-<form method="post">
+<h3 class="mb-4">Create Page</h3>
+
+<form method="post" action="/create/" class="form-group">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="save">Create new</button>
+
+    <div class="input-group mb-3">
+        {{ form.name }}
+        <button type="submit" name="save" class="btn btn-success">Create new</button>
+    </div>
 </form>
 
 {% endblock %}

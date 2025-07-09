@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms', # add installed app from pip
+    'crispy_bootstrap5', #add crispy bootstrap5
     'main.apps.MainConfig', # add app
+    'register.apps.RegisterConfig', #add register app
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+## ME : ADD cripsy config
+CRISPY_ALLOWED_TEMPLATE_PACK = ["bootstrap5"]
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = "/"  # when users login redirect to home page
+LOGOUT_REDIRECT_URL = "/"

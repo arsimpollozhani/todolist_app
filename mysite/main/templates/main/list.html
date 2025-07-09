@@ -1,26 +1,28 @@
 {% extends "main/base.html" %}
 
-
 {% block title %} Viewing list {% endblock %}
 
-
 {% block content %}
+    <div class="container my-4">
+        <h1 class="mb-4">{{ lista.name }}</h1>
 
-    <h1>{{ lista.name }}</h1>
+        <form action="#" method="post">
+            {% csrf_token %}
 
-    <form action="#" method="post">
-        {% csrf_token %}
-        <ul>
             {% for item in lista.items.all %}
-                {% if item.complete == True %}
-                    <li>  <input type="checkbox" value="clicked" name="c{{ item.id }}" checked> {{item.text}}</li>
-                {% else %}
-                    <li> <input type="checkbox" value="clicked" name="c{{ item.id }}"> {{item.text}}</li>
-                {% endif %}
+                <div class="input-group mb-3 align-items-center">
+                    <div class="input-group-text">
+                        <input type="checkbox" value="clicked" name="c{{ item.id }}" {% if item.complete %}checked{% endif %}>
+                    </div>
+                    <input type="text" value="{{ item.text }}" class="form-control">
+                </div>
             {% endfor %}
-        </ul>
-        <button type="submit" name="save" value="save">Save</button>
-        <input type="text" name="new">
-        <button type="submit" name="newItem" value="newItem">Add Item</button>
-    </form>
+
+            <div class="mb-3">
+                <button type="submit" name="save" value="save" class="btn btn-primary me-2 rounded">Save</button>
+                <input type="text" name="new" class="form-control d-inline w-auto me-2" placeholder="New item">
+                <button type="submit" name="newItem" value="newItem" class="btn btn-success rounded">Add Item</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
