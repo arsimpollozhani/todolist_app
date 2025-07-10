@@ -4,10 +4,17 @@
 
 {% block content %}
 
-<h3 class="mb-4">View</h3>
+<style>
+    #todos-list:hover {
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+</style>
+
+<h3 class="mb-4">View todos</h3>
 
     {% for list in user.todolist.all %}
-        <p><a href="/{{list.id}}">{{ list.name }}</a></p>
+        <p id="todos-list" class="px-2 py-1"><a href="/{{list.id}}">{{ list.name }}</a></p>
     {% endfor %}
 
 {% endblock %}

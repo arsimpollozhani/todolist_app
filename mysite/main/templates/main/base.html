@@ -11,7 +11,7 @@
 </head>
 
 <style>
-    .sidenav {
+    /* .sidenav {
         height: 100%;
         width: 160px;
         position: fixed;
@@ -38,17 +38,63 @@
     .main {
         margin-left: 160px;
         padding: 0px 10px;
+    } */
+
+    body::before {
+    display: block;
+    content: '';
+    height: 60px;
     }
 </style>
 
 <body>
 
-    <div class="sidenav" >
-        <a href="{% url 'home' %}">Home</a>   <!-- by using url, django finds the path using the name= attribute at urls.py -->
-        <a href="{% url 'create' %}">Create</a>
-        <a href="{% url 'view' %}">View</a>
-        <a href="{% url 'register' %}">Register</a>
-    </div>
+    <!-- <div class="sidenav" >
+
+        <a href="{% url 'home' %}">Home</a>    by using url, django finds the path using the name= attribute at urls.py 
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'create' %}">Create</a>
+            <a href="{% url 'view' %}">View</a>
+            
+        {% endif %}
+
+    </div> -->
+
+
+    <!-- Navbar   -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand">ToDo</a>
+
+            <button 
+            class="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navmenu"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'create' %}" class="nav-link">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'view' %}" class="nav-link">View</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     
     <div class="main" id="content" name="content">
        <div class="row justify-content-center">
