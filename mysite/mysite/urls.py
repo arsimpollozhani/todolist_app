@@ -30,6 +30,10 @@ urlpatterns = [
     # Logout with redirect to login page after logout
     path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),
 
+    path("account/", v.account, name="account"),
+
     path('', include("django.contrib.auth.urls")),
+
+    
     
 ]

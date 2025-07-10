@@ -63,3 +63,5 @@ def create(request):
 def view (request):
     return render (request, "main/view.html", {})
 
+
+
