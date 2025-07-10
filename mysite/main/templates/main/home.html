@@ -6,7 +6,13 @@
 
 {% block content %}
 
-<h1>Home page</h1>
+<div class="d-flex container mb-4 justify-content-center">
+    <h1>Home page</h1>
+</div>
+    {% if user.is_authenticated and user.is_superuser %}
+        <div class="alert alert-info">You are logged in as admin.</div>
+    {% endif %}
+
 
     {% if user.is_authenticated %}
       
@@ -18,9 +24,28 @@
         </form>
     
     {% else %}
+        <div class="container mt-4">
+            <h3>Hello to the ToDo App</h3>    
+        </div>
+        
+        <div class="container mt-4 mb-2">
+            To use the app features plesae create an account. If you already have an account please login.
+        </div>
 
-        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-        <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
+        <hr class="mt-0 mb-4">
+
+        <div class="d-flex container justify-content-center">
+            <div class="row row-col-2">
+                <div class="col-2 mx-4">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                </div>
+                <div class="col-2 mx-4">
+                    <a href="{% url 'register' %}" class="btn btn-danger">Register</a>
+                </div>
+            </div>
+        </div>
+        
+        
 
     {% endif %}
 
