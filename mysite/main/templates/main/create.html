@@ -4,11 +4,13 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <h3 class="mb-4">Create Page</h3>
 
 <form method="post" action="/create/" class="form-group">
     {% csrf_token %}
-
+    <p class="mb-4">Once you create a list of view the lists in the <a href="{% url 'view' %}">view</a> tab.</p>
     <div class="input-group mb-3">
         {{ form.name }}
         <button type="submit" name="save" class="btn btn-success">Create new</button>

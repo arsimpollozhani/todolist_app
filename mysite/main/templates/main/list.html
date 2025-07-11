@@ -3,25 +3,27 @@
 {% block title %} Viewing list {% endblock %}
 
 {% block content %}
-    <div class="container my-4">
+    <div class="container">
         <h1 class="mb-4">{{ lista.name }}</h1>
 
         <form action="#" method="post">
             {% csrf_token %}
 
             {% for item in lista.items.all %}
-                <div class="input-group mb-3 align-items-center">
+                <div class="input-group mb-3">
                     <div class="input-group-text">
-                        <input type="checkbox" value="clicked" name="c{{ item.id }}" {% if item.complete %}checked{% endif %}>
+                        <input class="form-check-input mt-0" type="checkbox" value="clicked" name="c{{ item.id }}" {% if item.complete %}checked{% endif %}>
                     </div>
-                    <input type="text" value="{{ item.text }}" class="form-control">
+                    <input type="text" class="form-control" value="{{ item.text }}">
                 </div>
             {% endfor %}
 
             <div class="mb-3">
-                <button type="submit" name="save" value="save" class="btn btn-primary me-2 rounded">Save</button>
-                <input type="text" name="new" class="form-control d-inline w-auto me-2" placeholder="New item">
-                <button type="submit" name="newItem" value="newItem" class="btn btn-success rounded">Add Item</button>
+                <div class="input-group">
+                    <input type="text" name="new" class="form-control" placeholder="New item">
+                    <button type="submit" name="newItem" value="newItem" class="btn btn-success">Add Item</button>
+                </div>
+                <button type="submit" name="save" value="save" class="btn btn-primary me-2 mt-2">Save</button>
             </div>
         </form>
     </div>

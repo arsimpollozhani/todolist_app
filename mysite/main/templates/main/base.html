@@ -93,6 +93,14 @@
                     <li class="nav-item">
                         <a href="{% url 'account' %}" class="nav-link">Account</a>
                     </li>
+
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}" style="display:inline;" >
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    </li>
+
                     {% endif %}
                 </ul>
             </div>
@@ -100,9 +108,9 @@
     </nav>
 
     
-    <div class="main" id="content" name="content">
+    <div class="main container px-sm-5" id="content" name="content">
        <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col">
                 <hr class="mt-0 mb-4">
                     {% block content %}
 

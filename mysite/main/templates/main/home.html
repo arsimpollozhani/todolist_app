@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="d-flex container mb-4 justify-content-center">
-    <h1>Home page</h1>
+
 </div>
     {% if user.is_authenticated and user.is_superuser %}
         <div class="alert alert-info">You are logged in as admin.</div>
@@ -17,15 +17,10 @@
     {% if user.is_authenticated %}
       
         <h2 class="mt-4 mb-4">Welcome, {{ user.username }}!</h2>
-
-        <form method="post" action="{% url 'logout' %}" style="display:inline;" >
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Logout</button>
-        </form>
     
     {% else %}
         <div class="container mt-4">
-            <h3>Hello to the ToDo App</h3>    
+            <h1>Hello to the ToDo App</h1>    
         </div>
         
         <div class="container mt-4 mb-2">
