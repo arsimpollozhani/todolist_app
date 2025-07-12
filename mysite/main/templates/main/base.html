@@ -79,6 +79,15 @@
        </div>
     </div>
     
-    
+    <footer>
+        <div class="container">
+            <p class="fs-6 lead mt-5 px-sm-5">&copy; <span id="year"></span> Arsim Polozhani</p>
+        </div>
+    </footer>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById("year").textContent = currentYear;
+    </script>
 </body>
 </html>

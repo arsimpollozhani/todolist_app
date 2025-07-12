@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms', # add installed app from pip
-    'crispy_bootstrap5', #add crispy bootstrap5
+    'crispy_bootstrap5', # add crispy bootstrap5
     'main.apps.MainConfig', # add app
     'register.apps.RegisterConfig', #add register app
 ]

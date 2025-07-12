@@ -54,7 +54,7 @@ def create(request):
             t.save()
             request.user.todolist.add(t)
         
-        return HttpResponseRedirect ("/%i" % t.id)
+        return HttpResponseRedirect (f"/%{t.id}")
     else:
         form = CreateNewList()
     return render(request, "main/create.html", {"form": form})

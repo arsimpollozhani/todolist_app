@@ -20,19 +20,19 @@ from register import views as v
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("register/", v.register, name="register"),
-    path('', include("main.urls")),
+    path('admin/', admin.site.urls),  # admin
+    path("register/", v.register, name="register"),  # app: register
+    path('', include("main.urls")), # app: main
 
     # Login view
-    path("register/login/", auth_views.LoginView.as_view(template_name='register/login.html'), name="login"),
+    path("register/login/", auth_views.LoginView.as_view(template_name='register/login.html'), name="login"), # custom
 
     # Logout with redirect to login page after logout
-    path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),
+    path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),  # custom
 
-    path("account/", v.account, name="account"),
+    path("account/", v.account, name="account"),  # app: register
 
-    path('', include("django.contrib.auth.urls")),
+    path('', include("django.contrib.auth.urls")), # for authentication
 
     
     
